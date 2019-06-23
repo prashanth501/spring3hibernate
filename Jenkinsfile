@@ -7,7 +7,7 @@ pipeline {
             steps{
             sh  'https://github.com/prashanth501/spring3hibernate'
             }
-        stage(compile package)
+        stage('compile package')
         {
             steps{
             sh 'mvn package'
