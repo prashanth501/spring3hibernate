@@ -3,7 +3,7 @@ pipeline {
         stages {
             stage('git clone') {
                  steps{
-                 git credentialsId: '975bcc7c-cd09-431f-bdfa-00a8fd1039b0', url: 'https://github.com/krreddy1523/spring3.git'
+                 git credentialsId: '975bcc7c-cd09-431f-bdfa-00a8fd1039b0', url: 'https://github.com/prashanth501/spring3hibernate.git'
             }
         }
 		    stage('mvn '){
