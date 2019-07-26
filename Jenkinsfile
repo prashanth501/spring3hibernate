@@ -28,7 +28,7 @@ pipeline {
         }   
 		    stage (jacoco code coverage"){
 			     steps {
-				 jacoco exclusionPattern: '**/*Test*.class', inclusionPattern: '**/*.class', sourceExclusionPattern: 'generated/**/*.java'
+			     jacoco exclusionPattern: '**/*Test*.class', inclusionPattern: '**/*.class', sourceExclusionPattern: 'generated/**/*.java'
 			}
 		}
             stage ('Publish findbugs'){
