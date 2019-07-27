@@ -21,6 +21,12 @@ pipeline {
                  sh ' mvn cobertura:cobertura'
             }
         }
+		    stage("Building SONAR ...") {
+                 steps{
+                 sh './gradlew clean sonarqube'
+                 }
+                 } catch (e) {emailext attachLog: true, body: 'See attached log', subject: 'BUSINESS Build Failure', to: 'prashanth.kochu@gmail.com'
+                 step([$class: 'WsCleanup'])
             stage ('Publish Cobertura'){
                  steps {
                  cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/target/site/cobertura/coverage.xml', conditionalCoverageTargets: '70, 0, 0', failUnhealthy: false, failUnstable: false, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false
@@ -43,6 +49,8 @@ pipeline {
 	}			 
 
 		
+
+	
 
 	
 
