@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('Git Clone'){
             steps{
-            sh  'https://github.com/prashanth501/spring3hibernate'
+            sh  'https://github.com/prashanth501/spring3hibernate.git'
             }
 		}
         stage('compile package'){
