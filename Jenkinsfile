@@ -9,6 +9,7 @@ pipeline {
 		    stage('mvn '){
 		         steps{
 			     sh 'mvn package'
+				 sh 'mv target/*.war target/myweb.war'
 		     }
 		}
 		    stage('code quality'){
@@ -42,16 +43,24 @@ pipeline {
                  findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: ' **/findbugsXml.xml', unHealthy: ''
 
             
-                }
-
             }
-        }			 
-	}			 
 
-		
-
-	
-
-	
+        }
+		    stage (deploying war file to target machine){
+			     steps{
+				 sshagent(['tomcat-new']) {
+                    sh """
+                         scp -o StrictHostKeyChecking=no target/myweb.war tomcat8@192.168.33.10:/opt/apache-tomcat-8.5.46/webapps
+						 
+						 ssh tomcat8@192.168.33.10 /opt/apache-tomcat-8.5.46/bin/shutdown.sh
+						 
+						 ssh tomcat8@192.168.33.10 /opt/apache-tomcat-8.5.46/bin/startup.sh
+						 
+						 
+                       """				  
+			}
+        }	 
+	}		 
+}
 
 	
