@@ -36,7 +36,7 @@ pipeline {
             }
 
         }
-		    stage (deploying war file to target machine){
+		    stage ('deploying war file to target machine'){
 			     steps{
 				 sshagent(['tomcat-new']) {
                     sh """
