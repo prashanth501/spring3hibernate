@@ -47,8 +47,8 @@ pipeline {
 						 ssh tomcat8@192.168.33.10 /opt/apache-tomcat-8.5.46/bin/startup.sh
 						 
 						 
-                       """				  
-			}
-        }	 
-	}		 
+             }          """				  
+		}
+    }	 
+}		 
 }
