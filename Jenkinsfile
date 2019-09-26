@@ -21,7 +21,7 @@
 						 
 						   ssh test@192.168.33.10 /opt/apache-tomcat-8.5.46/bin/shutdown.sh
 						 
-						   ssh test8@192.168.33.10 /opt/apache-tomcat-8.5.46/bin/startup.sh
+						   ssh test@192.168.33.10 /opt/apache-tomcat-8.5.46/bin/startup.sh
 						   
                           """				  
                 }
