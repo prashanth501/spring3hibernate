@@ -1,4 +1,5 @@
-    pipeline {
+ currentBuild.displayName = "spring3hibernate-#"+currentBuild.number
+ pipeline {
         agent any
             stages {
                 stage('git clone') {
@@ -30,4 +31,3 @@
     }
 }	
      
-	 
