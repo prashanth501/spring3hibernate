@@ -17,7 +17,7 @@
 			        steps{
 				    sshagent(['test']) {
                        sh """
-                           scp -o StrictHostKeyChecking=no target/myweb.war test@192.168.33.10:/opt/apache-tomcat-8.5.46/webapps
+                           scp -o StrictHostKeyChecking=no target/*.war test@192.168.33.10:/opt/apache-tomcat-8.5.46/webapps
 						 
 						   ssh test@192.168.33.10 /opt/apache-tomcat-8.5.46/bin/shutdown.sh
 						 
