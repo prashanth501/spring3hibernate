@@ -12,27 +12,7 @@
 				    sh 'mv target/*.war target/myweb.war'
 		        }
 		    }
-		        stage('code quality'){
-			        steps{
-				    sh 'mvn checkstyle:checkstyle; mvn findbugs:findbugs'
-			    }
-            }
-                stage ('Code Coverage'){
-                    steps{
-                    sh ' mvn cobertura:cobertura'
-                } 
-            }
-	
-		        stage ('jacoco code coverage'){
-			        steps {
-			        jacoco exclusionPattern: '**/*Test*.class', inclusionPattern: '**/*.class', sourceExclusionPattern: 'generated/**/*.java'
-			    }
-		    }
-                stage ('Publish findbugs'){
-                    steps{
-                    findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: ' **/findbugsXml.xml', unHealthy: ''
-                }
-			}
+		        
 		        stage ('deploying war file to target machine'){
 			        steps{
 				    sshagent(['tomcat-new']) {
