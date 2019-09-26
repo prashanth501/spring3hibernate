@@ -15,13 +15,13 @@
 		        
 		        stage ('deploying war file to target machine'){
 			        steps{
-				    sshagent(['tomcat-new']) {
+				    sshagent(['test']) {
                        sh """
-                           scp -o StrictHostKeyChecking=no target/myweb.war tomcat8@192.168.33.10:/opt/apache-tomcat-8.5.46/webapps
+                           scp -o StrictHostKeyChecking=no target/myweb.war test@192.168.33.10:/opt/apache-tomcat-8.5.46/webapps
 						 
-						   ssh tomcat8@192.168.33.10 /opt/apache-tomcat-8.5.46/bin/shutdown.sh
+						   ssh test@192.168.33.10 /opt/apache-tomcat-8.5.46/bin/shutdown.sh
 						 
-						   ssh tomcat8@192.168.33.10 /opt/apache-tomcat-8.5.46/bin/startup.sh
+						   ssh test8@192.168.33.10 /opt/apache-tomcat-8.5.46/bin/startup.sh
 						   
                           """				  
                 }
